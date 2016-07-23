@@ -1,0 +1,140 @@
+<html>
+<head>
+    <title>CS-81 Javascript Unit 9</title>
+</head>
+<body  onload="setFocus();">
+
+<center>
+<h1>Unit 9 Exercise 10</h1>
+
+<table>
+  <tr>
+    <td>
+      <label>First and Last Name: </label>
+    </td>
+    <td>
+        <input type="text" name="name" id="name" />
+    </td>
+      <td rowspan="2">
+          Optional
+      </td>
+  </tr>
+  <tr>
+    <td>
+        <label>Email Address: </label>
+    </td>
+    <td>
+        <input type="text" name="email" id="email" />
+    </td>
+  </tr>
+  <tr>
+      <td colspan="2"><hr /><center><h2>Required fields!</h2></center></td>
+  </tr>
+
+  <tr>
+      <td>
+      <label>Nickname :</label>
+      </td>
+      <td>
+        <input type="text" name="username" id="username" onblur="notBlank()"/>
+      </td>
+  </tr>
+  <tr>
+      <td>
+        <label>Password :</label>
+      </td>
+      <td>
+        <input type="password" name="pass1" id="pass1" onblur="notBlankPass()" />
+      </td>
+  </tr>
+  <tr>
+    <td>
+    <label>Retype It :</label>
+    </td>
+    <td>
+      <input type="password" name="pass2" id="pass2" onblur="doPassMatch()"/>
+    </td>
+  </tr>
+  <tr>
+    <td>
+        &nbsp;
+    </td>
+    <td>
+      <input type="button" value="Sign Up!" id="submit" onclick="validate()" />
+      </td>
+  </tr>
+</table>
+</center>
+
+
+<script>
+
+function setFocus() {
+    document.getElementById("name").focus();
+    document.getElementById("submit").disabled = true;
+    }
+
+function clear() {
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("username").value = "";
+    document.getElementById("pass1").value = "";
+    document.getElementById("pass2").value = "";
+    setFocus();
+}
+
+function notBlank () {
+ var uid = document.getElementById("username").value;
+    if (!uid.replace(/^\s+/g, '').length == true) {
+       alert("Please do not leave fields blank!");
+       setFocus();
+       } else {
+           document.getElementById("pass1").focus();
+    }
+}
+
+function notBlankPass() {
+  var pass1 = document.getElementById("pass1").value;
+    if (!pass1.replace(/^\s+/g, '').length == true) {
+        alert("Please do not leave fields blank!");
+        document.getElementById("pass1").focus();
+        } else {
+        document.getElementById("pass2").focus();
+    }
+}    
+    
+
+function doPassMatch() {
+  var pass1 = document.getElementById("pass1").value;
+  var pass2 = document.getElementById("pass2").value;
+   
+    if (pass1 !== pass2 ) {
+        alert("There's an issue with the passwords, please retry.");
+        document.getElementById("pass1").value = "";
+        document.getElementById("pass2").value = "";
+        setFocus();
+        document.getElementById("pass1").focus();
+    } else {
+        document.getElementById("submit").disabled = false;
+        document.getElementById("submit").focus();
+    }
+}
+
+function validate() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var uid = document.getElementById("username").value;
+    var pass1 = document.getElementById("pass2").value;
+    var pass2 = document.getElementById("pass1").value;
+
+    alert("Data to send in a POST to server XYZ includes; " + name + ", " + email + ", " + uid + ", " + pass1 + ".");
+    alert("Please don't ask how long this took.\nIt is too embarrassing to answer.\nAt some point I'll rework this to use element nodes, but for now I have to press on.");
+
+    clear();
+}
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CS-81 Unit 9</title>
+</head>
+<body onload="clear()">
+
+<center>
+
+<h1>Unit 9 Exercise 14</h1>
+
+Implement a user profile page with context-sensitive help.  Page should consist of multiple labeled text input fields.<br />
+Next to each field provide a brief explanation of the field that's initially invisible.<br />
+Set focus and blur event handlers to display explanation only when the field gets keyboard focus.
+</center>
+<hr />
+<p />
+
+<table>
+
+    <tr>
+        <td>
+            Name
+        </td>
+        <td>
+            <input type="text" id="name" onfocus="nameHelp()" onblur="document.getElementById('helpDisplay').style.display = 'none';">
+        </td>
+        <td rowspan="3">
+            <p id="helpDisplay"></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email
+        </td>
+        <td>
+            <input type="text" id="email" onfocus="nameEmail()" onblur="document.getElementById('helpDisplay').style.display = 'none';">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Hobbies
+        </td>
+        <td>
+            <textarea id="hobbies" onfocus="nameHobbies()" onblur="document.getElementById('helpDisplay').style.display = 'none';"></textarea>
+        </td>
+    </tr>
+</table>
+
+<p />
+<hr />
+<p />
+
+
+<script>
+
+function clear() {
+    document.getElementById('helpDisplay').style.display = 'none';
+    // alert("This function will not be triggered by an onblur event.  Why?");
+}
+
+function nameHelp() {
+       var helpName = "&nbsp; &nbsp;Enter your first and last name.";
+       document.getElementById("helpDisplay").innerHTML =
+            helpName;
+       document.getElementById("helpDisplay").style.display = "block";
+   }
+
+function nameEmail() {
+    var helpEmail = "&nbsp; &nbsp;Enter the email address you want to use.";
+    document.getElementById("helpDisplay").innerHTML = helpEmail;
+    document.getElementById("helpDisplay").style.display = "block";
+    }
+
+function nameHobbies() {
+    var helpHobbies = "&nbsp; &nbsp;Enter some of your hobbies so we can start a conversation.";
+    document.getElementById("helpDisplay").innerHTML = helpHobbies;
+    document.getElementById("helpDisplay").style.display = "block";
+    }
+
+</script>
+
+
+</body>
+</html>
